@@ -11,9 +11,10 @@ import PageWrapper from '@/componenets/General/PageWrapper';
 import { isFormValid } from '@/utils/helper';
 import { LoginSchema } from '@/utils/validation';
 import { useFormik } from 'formik';
+import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { FC } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify';
 
 interface ILoginForm {
@@ -21,7 +22,7 @@ interface ILoginForm {
   password: string;
 }
 
-const SignInPage: FC<SignInPageProps> = () => {
+const SignInPage: NextPage = () => {
   const formik = useFormik({
     onSubmit: (values: ILoginForm) => {
       console.log(values);
@@ -51,7 +52,11 @@ const SignInPage: FC<SignInPageProps> = () => {
 
               <h1 className="text-2xl font-semibold">Login to Your Account</h1>
 
-              <form className="w-full" onSubmit={formik.handleSubmit}>
+              <form
+                className="w-full"
+                onSubmit={formik.handleSubmit}
+                autoComplete="off"
+              >
                 <Input
                   className="mb-4"
                   type={'email'}
@@ -96,7 +101,7 @@ const SignInPage: FC<SignInPageProps> = () => {
 
                 <div className="flex items-center w-full justify-around mt-4">
                   <button
-                    className="p-4 rounded-2xl bg-slate-600"
+                    className="transition p-4 rounded-2xl bg-slate-600 hover:shadow-slate-500 hover:shadow-md"
                     onClick={() =>
                       toast.error('Sorry, coming soon!', {
                         position: 'top-right',
@@ -111,7 +116,7 @@ const SignInPage: FC<SignInPageProps> = () => {
                     <GoogleIcon />
                   </button>
                   <button
-                    className="p-4 rounded-2xl bg-slate-600"
+                    className="transition p-4 rounded-2xl bg-slate-600 hover:shadow-slate-500 hover:shadow-md"
                     onClick={() =>
                       toast.error('Sorry, coming soon!', {
                         position: 'top-right',
@@ -126,7 +131,7 @@ const SignInPage: FC<SignInPageProps> = () => {
                     <AppleIcon />
                   </button>
                   <button
-                    className="p-4 rounded-2xl bg-slate-600"
+                    className="transition p-4 rounded-2xl bg-slate-600 hover:shadow-slate-500 hover:shadow-md"
                     onClick={() =>
                       toast.error('Sorry, coming soon!', {
                         position: 'top-right',

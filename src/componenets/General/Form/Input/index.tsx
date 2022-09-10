@@ -1,5 +1,7 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, useState } from 'react';
 import clsx from 'clsx';
+import EyeIcon from '@/assets/icons/EyeIcon';
+import EyeSlashIcon from '@/assets/icons/EyeSlashIcon';
 
 interface InputProps {
   className?: string;
@@ -24,18 +26,51 @@ const Input: FC<InputProps> = ({
   value,
   isError,
 }) => {
+  const [hide, setHide] = useState<boolean>(true);
+  const toggleHide = () => {
+    setHide((prev) => !prev);
+  };
+
+  if (type !== 'password') {
+    return (
+      <div className={`relative ${className}`}>
+        {suffixIcon}
+        <input
+          type={type}
+          className={clsx('input', { '': isError })}
+          placeholder={placeholder}
+          name={name}
+          onChange={onChange}
+          value={value}
+        />
+        {isError && errMsg && (
+          <div className="text-red-500 mt-2 pl-6">{errMsg}</div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className={`relative ${className}`}>
       {suffixIcon}
+      <div
+        className="absolute  top-[14px] right-4 cursor-pointer"
+        onClick={toggleHide}
+      >
+        {hide ? <EyeIcon /> : <EyeSlashIcon />}
+      </div>
+
       <input
-        type={type}
-        className={clsx('input mb-1', { '': isError })}
+        type={hide ? 'password' : 'text'}
+        className={clsx('input', { '': isError })}
         placeholder={placeholder}
         name={name}
         onChange={onChange}
         value={value}
       />
-      {isError && errMsg && <span className="text-red-500 pl-6">{errMsg}</span>}
+      {isError && errMsg && (
+        <div className="text-red-500 mt-2 pl-6">{errMsg}</div>
+      )}
     </div>
   );
 };

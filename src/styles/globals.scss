@@ -12,7 +12,7 @@ body {
 }
 
 .input {
-  @apply mt-1 block w-full pl-10 pr-3 py-3 bg-slate-900 border-2 border-[#424867] rounded-xl text-sm shadow-sm placeholder-[#DCDEF380]
+  @apply mt-1 block w-full pl-10 pr-3 py-3 bg-slate-900 border-2 border-[#424867] rounded-xl text-sm shadow-md placeholder-[#DCDEF380]
   focus:outline-none focus:border-[#2563EBCC] focus:ring-1 focus:ring-[#2563EBCC]
   disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
   invalid:border-red-500 invalid:text-red-600

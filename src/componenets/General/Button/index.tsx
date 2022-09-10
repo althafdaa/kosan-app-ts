@@ -28,7 +28,7 @@ const Button: FC<ButtonProps> = ({
       <button
         type={type}
         className={clsx(
-          `transition-all text-white text-sm font-semibold px-3 py-2 rounded-xl active:scale-105`,
+          `transition-all text-white text-sm font-semibold px-3 py-2 rounded-xl active:scale-105 hover:shadow-slate-500 hover:shadow`,
           className,
           {
             'bg-blue-600 hover:bg-blue-800 ': theme === 'primary',
@@ -50,7 +50,7 @@ const Button: FC<ButtonProps> = ({
   return (
     <a
       className={clsx(
-        `transition-all text-white text-center text-sm font-semibold px-3 py-2 rounded-xl active:scale-105`,
+        `transition-all text-white text-center text-sm font-semibold px-3 py-2 rounded-xl active:scale-105 `,
         className,
         {
           'bg-blue-600 hover:bg-blue-800 ': theme === 'primary',
