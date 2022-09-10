@@ -16,8 +16,6 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 import { toast } from 'react-toastify';
 
-interface SignInPageProps {}
-
 interface ILoginForm {
   email: string;
   password: string;
