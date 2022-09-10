@@ -19,3 +19,9 @@ export const RegisterStepOneSchema = y.object().shape({
     .required('Please retype your password.')
     .oneOf([y.ref('password')], 'Your passwords do not match.'),
 });
+
+export const RegisterStepTwoSchema = y.object().shape({
+  fullname: y.string().required('Please insert your Full Name'),
+  phone: y.number().required('Please insert your phone number'),
+  checked: y.bool().oneOf([true], 'Field must be checked').required(),
+});

@@ -9,7 +9,7 @@ interface InputProps {
   placeholder?: string;
   name: string;
   onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
-  value: string | number | readonly string[] | undefined;
+  value?: string | number | readonly string[] | undefined;
   type: React.HTMLInputTypeAttribute;
   isError?: boolean;
   errMsg?: string;
@@ -33,7 +33,7 @@ const Input: FC<InputProps> = ({
 
   if (type !== 'password') {
     return (
-      <div className={`relative ${className}`}>
+      <div className={`relative  ${className}`}>
         {suffixIcon}
         <input
           type={type}

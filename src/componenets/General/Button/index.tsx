@@ -7,7 +7,7 @@ interface ButtonProps {
   children: ReactNode;
   className?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  type?: 'button' | 'submit' | 'reset' | undefined;
+  type?: 'button' | 'submit' | 'reset';
   isLoading?: boolean;
   theme: 'primary' | 'secondary' | 'danger' | 'disabled';
   as?: 'button' | 'a';
@@ -28,13 +28,17 @@ const Button: FC<ButtonProps> = ({
       <button
         type={type}
         className={clsx(
-          `transition-all text-white text-sm font-semibold px-3 py-2 rounded-xl active:scale-105 hover:shadow-slate-500 hover:shadow`,
+          `transition-all text-white flex items-center justify-center  text-sm font-semibold px-3 py-2 rounded-xl active:scale-105 hover:shadow-slate-500 hover:shadow`,
           className,
           {
             'bg-blue-600 hover:bg-blue-800 ': theme === 'primary',
             'bg-[#171A2B] border': theme === 'secondary',
             'bg-red-600 hover:bg-red-800 ': theme === 'danger',
-            'text-[#ABADC6] active:scale-100': theme === 'disabled',
+            'text-[#ABADC6] active:scale-100 hover:shadow-none':
+              theme === 'disabled',
+          },
+          {
+            'animate-pulse': isLoading,
           }
         )}
         disabled={theme === 'disabled'}

@@ -9,15 +9,29 @@ import { IRegister } from '@/utils/type';
 import Button from '../../Button';
 
 interface RegisterStepOneProps {
+  current: number;
+  payload: IRegister;
   onSubmit: (values: object) => void;
 }
 
-const RegisterStepOne: FC<RegisterStepOneProps> = ({ onSubmit }) => {
+const RegisterStepOne: FC<RegisterStepOneProps> = ({
+  current,
+  payload,
+  onSubmit,
+}) => {
   const formik = useFormik({
     onSubmit,
     initialValues: { email: '', password: '', confirmPassword: '' },
     validationSchema: RegisterStepOneSchema,
   });
+
+  useEffect(() => {
+    if (current === 1) {
+      formik.setFieldValue('email', payload.email);
+      formik.setFieldValue('password', payload.password);
+      formik.setFieldValue('confirmPassword', payload.confirmPassword);
+    }
+  }, [current]);
 
   return (
     <form className="w-full" autoComplete="off" onSubmit={formik.handleSubmit}>
