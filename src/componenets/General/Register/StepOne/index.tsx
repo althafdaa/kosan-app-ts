@@ -4,7 +4,7 @@ import { isFormValid } from '@/utils/helper';
 import { RegisterStepOneSchema } from '@/utils/validation';
 import { useFormik } from 'formik';
 import Input from '@/componenets/General/Form/Input';
-import React, { Dispatch, FC, SetStateAction, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { IRegister } from '@/utils/type';
 import Button from '../../Button';
 

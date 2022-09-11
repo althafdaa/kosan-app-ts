@@ -1,5 +1,11 @@
+import SearchIcon from '@/assets/icons/SearchIcon';
+import Button from '@/componenets/General/Button';
+import Card from '@/componenets/General/Card';
+import Filler from '@/componenets/General/Filler';
+import Input from '@/componenets/General/Form/Input';
 import PageWrapper from '@/componenets/General/PageWrapper';
 import { getLocalStorageValue, setLocalStorageValue } from '@/utils/helper';
+import { useFormik } from 'formik';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -8,6 +14,12 @@ import { useEffect } from 'react';
 
 const Home: NextPage = () => {
   const router = useRouter();
+  const { handleSubmit, values, handleChange } = useFormik({
+    onSubmit: (values) => {
+      console.log(values);
+    },
+    initialValues: { search: '' },
+  });
 
   useEffect(() => {
     const isOnboarded = getLocalStorageValue('kosan-onboarding');
@@ -28,7 +40,63 @@ const Home: NextPage = () => {
       </Head>
 
       <PageWrapper>
-        <Link href={'/onboarding'}> onboarding</Link>
+        <div className="flex flex-col max-h-screen items-center justify-between w-full pt-4">
+          <header className="min-w-full flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 bg-red-400 rounded-full"></div>
+              <div>
+                <div className="text-xs">Hello</div>
+                <div className="font-medium">Althaf Demiandra</div>
+              </div>
+            </div>
+            <div>Profile</div>
+          </header>
+
+          <main className="flex flex-col w-full">
+            <div className="mt-4">
+              <form onSubmit={handleSubmit}>
+                <Input
+                  placeholder="What place are your looking for..."
+                  name="search"
+                  suffixIcon={
+                    <SearchIcon className="absolute top-[14px] left-3 text-[#DCDEF380]" />
+                  }
+                  type={'text'}
+                  onChange={handleChange}
+                  value={values.search}
+                />
+              </form>
+            </div>
+
+            <div className="mt-4 flex flex-col">
+              <div className="flex justify-between mb-4">
+                <h1 className="font-bold">Featured</h1>
+                <Link href={'/explore'} passHref>
+                  <a className="font-medium">See All</a>
+                </Link>
+              </div>
+
+              <Card />
+            </div>
+
+            <div className="mt-4">
+              <div className="flex justify-between mb-4">
+                <h1 className="font-bold">Explore</h1>
+                <Link href={'/explore'} passHref>
+                  <a className="font-medium">See All</a>
+                </Link>
+              </div>
+
+              <div className=" grid grid-cols-2 gap-2">
+                <Card /> <Card />
+                <Card /> <Card />
+                <Card /> <Card />
+              </div>
+            </div>
+          </main>
+
+          <Filler />
+        </div>
       </PageWrapper>
     </>
   );

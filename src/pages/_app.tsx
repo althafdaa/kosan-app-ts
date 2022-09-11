@@ -1,5 +1,6 @@
 import '../styles/globals.scss';
 import 'react-toastify/dist/ReactToastify.css';
+import 'swiper/css';
 import type { AppType } from 'next/dist/shared/lib/utils';
 import ThemeWrapper from '@/componenets/Layouts/ThemeWrapper';
 
