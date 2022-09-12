@@ -8,7 +8,7 @@ interface CardProps {}
 
 const Card: FC<CardProps> = (props) => {
   return (
-    <Link href="/" passHref>
+    <Link href="/room/1" passHref>
       <a className="p-3 bg-[#202234] rounded-3xl min-w-fit">
         <img className="rounded-md" src={HousingSample.src} alt="house" />
         <div className="mt-4 flex flex-col gap-1">

@@ -6,19 +6,17 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 
-interface NavigationProps {}
-
 const navItem = [
   { route: '/', label: 'Home', icon: HomeIcon },
   { route: '/explore', label: 'Explore', icon: HomeIcon },
   { route: '/bookmarks', label: 'Bookmarks', icon: HeartIcon },
   { route: '/profile', label: 'Profile', icon: PersonIcon },
 ];
-const Navigation: FC<NavigationProps> = (props) => {
+const Navigation: FC = () => {
   const router = useRouter();
   return (
-    <>
-      <nav className="w-full fixed inset-x-0 bottom-0 py-3 bg-[#1a1d2d] flex justify-between px-12">
+    <nav className="w-full fixed bottom-0 py-3 bg-[#1a1d2d]">
+      <div className="flex justify-between w-full max-w-[500px] mx-auto px-6">
         {navItem.map((item, idx) => {
           const isRouteMatch = router.asPath === item.route;
           return (
@@ -32,8 +30,8 @@ const Navigation: FC<NavigationProps> = (props) => {
             </Link>
           );
         })}
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 };
 

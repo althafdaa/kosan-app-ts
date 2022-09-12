@@ -11,7 +11,6 @@ import RegisterStepOne from '@/componenets/General/Register/StepOne';
 import { IRegister } from '@/utils/type';
 import { useRouter } from 'next/router';
 import RegisterStepTwo from '@/componenets/General/Register/StepTwo';
-import { FormikHelpers } from 'formik';
 
 const steps = [{ value: 1 }, { value: 2 }];
 

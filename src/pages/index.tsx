@@ -16,7 +16,7 @@ const Home: NextPage = () => {
   const router = useRouter();
   const { handleSubmit, values, handleChange } = useFormik({
     onSubmit: (values) => {
-      console.log(values);
+      router.push({ pathname: '/explore', query: { search: values.search } });
     },
     initialValues: { search: '' },
   });
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
 
       <PageWrapper>
         <div className="flex flex-col max-h-screen items-center justify-between w-full pt-4">
-          <header className="min-w-full flex items-center justify-between">
+          <div className="min-w-full flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 bg-red-400 rounded-full"></div>
               <div>
@@ -50,7 +50,7 @@ const Home: NextPage = () => {
               </div>
             </div>
             <div>Profile</div>
-          </header>
+          </div>
 
           <main className="flex flex-col w-full">
             <div className="mt-4">
